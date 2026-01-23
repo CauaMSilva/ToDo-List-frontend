@@ -17,6 +17,25 @@ form {
     gap: 12px;
     margin-bottom: 20px;
 }
+.titulo_tarefas{
+    font-size: 36px;
+    text-align: center;
+}
+#lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card {
+    display: flex;
+    background-color: rgb(56, 95, 56);
+    color: white;
+    width: 500px;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 12px;
+    justify-content: center;
+}
 input[type="text"],
 textarea {
     padding: 20px;

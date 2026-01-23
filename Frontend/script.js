@@ -7,15 +7,20 @@ const descricaoInput = document.getElementById("descricao")
 
 async function carregarTarefas() {
     const requisicao = await fetch(API_URL);
-    const tarefas = requisicao.json;
+    const tarefas = await requisicao.json();
 
     lista.innerHTML = "";
 
     tarefas.forEach(tarefa => {
         const li = document.createElement("li");
         li.innerHTML = `
-        ${tarefa.titulo}
-        <button onclick="deletar(${tarefa.id})">del</button>
+        <section class = "card">
+            <div class = "tarefa">
+                <h2>${tarefa.titulo}</h2>
+                <p>${tarefa.descricao}</p>
+            </div>
+                <button onclick="deletar(${tarefa.id})">del</button>
+        </section>
         `;
         lista.appendChild(li);
     });
