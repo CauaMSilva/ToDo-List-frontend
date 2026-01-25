@@ -11,14 +11,17 @@ async function carregarTarefas() {
 
     lista.innerHTML = "";
 
+
     tarefas.forEach(tarefa => {
+        const tarefaConcluida = tarefa.status === "concluida" ? "concluida" : "";
         const li = document.createElement("li");
         li.innerHTML = `
         <section class = "card">
-            <div class = "tarefa">
+            <div class = "tarefa ${tarefaConcluida}">
                 <h2>${tarefa.titulo}</h2>
                 <p>${tarefa.descricao}</p>
             </div>
+                <input type="checkbox" ${tarefa.status === "concluida" ? "checked" : ""} onchange="alterarStatus(${tarefa.id}, this.checked)">
                 <button onclick="deletar(${tarefa.id})">del</button>
         </section>
         `;
@@ -49,6 +52,20 @@ form.addEventListener("submit", async (e) => {
 async function deletar(id) {
     await fetch(`${API_URL}/${id}`, {
         method: "DELETE"
+    });
+
+    carregarTarefas();
+}
+
+async function alterarStatus(id, checked){
+    await fetch(`${API_URL}/${id}/status`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            status: checked ? "concluida" : "pendente"
+        })
     });
 
     carregarTarefas();
