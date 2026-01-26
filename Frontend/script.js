@@ -15,13 +15,17 @@ async function carregarTarefas() {
     tarefas.forEach(tarefa => {
         const tarefaConcluida = tarefa.status === "concluida" ? "concluida" : "";
         const li = document.createElement("li");
+        
         li.innerHTML = `
         <section class = "card">
             <div class = "tarefa ${tarefaConcluida}">
                 <h2>${tarefa.titulo}</h2>
                 <p>${tarefa.descricao}</p>
             </div>
+            <label class = "checkbox">
                 <input type="checkbox" ${tarefa.status === "concluida" ? "checked" : ""} onchange="alterarStatus(${tarefa.id}, this.checked)">
+                <span class = "checkmark"></span>
+            </label>
                 <button onclick="deletar(${tarefa.id})">del</button>
         </section>
         `;
