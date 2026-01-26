@@ -15,7 +15,8 @@ async function carregarTarefas() {
     tarefas.forEach(tarefa => {
         const tarefaConcluida = tarefa.status === "concluida" ? "concluida" : "";
         const li = document.createElement("li");
-        
+        li.dataset.id = tarefa.id;
+
         li.innerHTML = `
         <section class = "card">
             <div class = "tarefa ${tarefaConcluida}">
@@ -26,6 +27,7 @@ async function carregarTarefas() {
                 <input type="checkbox" ${tarefa.status === "concluida" ? "checked" : ""} onchange="alterarStatus(${tarefa.id}, this.checked)">
                 <span class = "checkmark"></span>
             </label>
+                <button onclick="editar(${tarefa.id}, '${tarefa.titulo}', '${tarefa.descricao}')">editar</button>
                 <button onclick="deletar(${tarefa.id})">del</button>
         </section>
         `;
@@ -74,6 +76,41 @@ async function alterarStatus(id, checked){
 
     carregarTarefas();
 }
+
+function editar(id, titulo, descricao) {
+  const li = document.querySelector(`li[data-id='${id}']`);
+
+  li.innerHTML = `
+    <section class="card">
+      <div class="tarefa">
+        <input type="text" id="edit-titulo-${id}" value="${titulo}">
+        <textarea id="edit-descricao-${id}">${descricao}</textarea>
+      </div>
+
+      <button onclick="salvarEdicao(${id})">salvar</button>
+      <button onclick="carregarTarefas()">cancelar</button>
+    </section>
+  `;
+}
+
+async function salvarEdicao(id) {
+  const novoTitulo = document.getElementById(`edit-titulo-${id}`).value;
+  const novaDescricao = document.getElementById(`edit-descricao-${id}`).value;
+
+  await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      titulo: novoTitulo,
+      descricao: novaDescricao
+    })
+  });
+
+  carregarTarefas();
+}
+
 
 
 carregarTarefas();
