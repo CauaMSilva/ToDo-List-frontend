@@ -3,55 +3,60 @@
     margin: 0;
     padding: 0;
 }
-h1 {
-    font-size: 36px;
+
+h1,
+.titulo_tarefas {
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
+
 .concluida h2,
 .concluida p {
     text-decoration: line-through;
     opacity: 0.6;
 }
+
 form {
-    padding: 5px;
-    border-radius: 30%;
-    box-shadow: rgb(70, 68, 68);
+    padding: 12px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 20px;
 }
-.titulo_tarefas{
-    font-size: 36px;
-    text-align: center;
-}
+
 #lista {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .card {
     display: flex;
     background-color: rgb(56, 95, 56);
     color: white;
-    width: 500px;
+    width: 100%;
+    max-width: 90%;
     border-radius: 8px;
-    padding: 5px;
-    margin: 12px;
+    padding: 12px;
+    margin: 10px 0;
     justify-content: center;
 }
+
 input[type="text"],
 textarea {
-    padding: 20px;
+    padding: 14px;
     border-radius: 8px;
     border: 1px solid #9e9d9d;
     font-size: 16px;
 }
-textarea{
+
+textarea {
     resize: none;
     height: 80px;
 }
+
 button {
     padding: 12px;
     border: none;
@@ -63,51 +68,67 @@ button {
 }
 
 .checkbox {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  margin: 0 10px;
-}   
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 10px;
+}
 
 .checkbox input {
-  display: none;
+    display: none;
 }
 
 .checkmark {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  border: 2px solid #a5d6a7;
-  background-color: transparent;
-  position: relative;
-  transition: all 0.2s ease;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid #a5d6a7;
+    background-color: transparent;
+    position: relative;
+    transition: all 0.2s ease;
 }
 
 .checkbox:hover .checkmark {
-  background-color: rgba(165, 214, 167, 0.2);
+    background-color: rgba(165, 214, 167, 0.2);
 }
 
 .checkbox input:checked + .checkmark {
-  background-color: rgb(70, 128, 65);
-  border-color: rgb(70, 128, 65);
+    background-color: rgb(70, 128, 65);
+    border-color: rgb(70, 128, 65);
 }
 
 .checkbox input:checked + .checkmark::after {
-  content: "✓";
-  color: white;
-  font-size: 16px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -55%);
+    content: "✓";
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
 }
 
 .concluida .checkmark {
-  opacity: 0.8;
+    opacity: 0.8;
 }
-
 
 footer {
     display: flex;
     justify-content: center;
+    padding: 12px;
+}
+
+@media (min-width: 768px) {
+    h1,
+    .titulo_tarefas {
+        font-size: 36px;
+    }
+
+    .card {
+        max-width: 500px;
+    }
+
+    form {
+        max-width: 500px;
+        margin: 0 auto 20px;
+    }
 }
