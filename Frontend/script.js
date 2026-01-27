@@ -1,4 +1,8 @@
-const API_URL = "http://localhost:3000/tarefas";
+const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3000/tarefas"
+    : "https://api-lista-de-afazeres.onrender.com/tarefas";
+
 
 const lista = document.getElementById("lista");
 const form = document.getElementById("form");
