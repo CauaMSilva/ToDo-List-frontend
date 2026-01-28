@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,6 +8,7 @@
 
 h1,
 .titulo_tarefas {
+    font-family: "Josefin Sans", sans-serif;
     font-size: 24px;
     text-align: center;
     margin-bottom: 16px;
@@ -49,6 +52,7 @@ textarea {
     padding: 14px;
     border-radius: 8px;
     border: 1px solid #9e9d9d;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
 }
 
@@ -120,6 +124,7 @@ footer {
 @media (min-width: 768px) {
     h1,
     .titulo_tarefas {
+        font-family: "Montserrat", sans-serif;
         font-size: 36px;
     }
 
